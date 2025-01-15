@@ -21,8 +21,14 @@ jobs:
         channel: 'stable' # 你可以根据需要修改为 'beta' 或 'dev'
         cache: true
 
+    - name: Delete pubspec.lock
+      run: rm -f pubspec.lock
+
+    - name: Clean Flutter cache
+      run: flutter clean
+        
     - name: Install dependencies
-      run: flutter pub get
+      run: flutter pub get --verbose
 
     - name: Build APK
       run: flutter build apk --release
